@@ -5,7 +5,7 @@ using System.IO;
 
 namespace Library.Models
 {
-  public class LibraryContextFactory : IDesignTimeDbContextLibrary<LibraryContext>
+  public class LibraryContextFactory : IDesignTimeDbContextFactory<LibraryContext>
   {
 
     LibraryContext IDesignTimeDbContextFactory<LibraryContext>.CreateDbContext(string[] args)

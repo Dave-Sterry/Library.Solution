@@ -1,4 +1,7 @@
 using System.Collections.Generic;
+using System;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace Library.Models
 {
@@ -8,11 +11,11 @@ namespace Library.Models
     public Checkout()
     {
       this.Books = new HashSet<Book>();
-      this.Patrons = new HashSetPatron();
+      this.Patrons = new HashSet<Patron>();
       this.Libraries = new HashSet<Library>();
-      this.BookCopy = new HashSet<BookCopy>();
+      this.BookCopies = new HashSet<BookCopy>();
     }
-    public int CheckoutId { get; get;}
+    public int CheckoutId { get; set; }
     public int BookId { get; set; }
     public int LibCardId { get; set; }
     public int LibraryId { get; set; }
