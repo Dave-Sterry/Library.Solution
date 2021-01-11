@@ -5,6 +5,13 @@ namespace Library.Models
 
   public class Checkout
   {
+    public Checkout()
+    {
+      this.Books = new HashSet<Book>();
+      this.Patrons = new HashSetPatron();
+      this.Libraries = new HashSet<Library>();
+      this.BookCopy = new HashSet<BookCopy>();
+    }
     public int CheckoutId { get; get;}
     public int BookId { get; set; }
     public int LibCardId { get; set; }
@@ -21,6 +28,13 @@ namespace Library.Models
     [DisplayName("Return Date")]
     [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd hh:mm tt}")]
     public DateTime ReturnDate { get; set; }
+
+    public ICollection<Book> Books { get; set; }
+    public ICollection<Library> Libraries { get; set; }
+
+    public ICollection<Patron> Patrons { get; set; }
+
+    public ICollection<BookCopy> BookCopies { get; set; }
   }
 
 }
