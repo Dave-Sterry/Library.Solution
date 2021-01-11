@@ -9,13 +9,13 @@ namespace Library.Models
     {
       this.Checkouts = new HashSet<Checkout>();
     }
-    public int LibCardId { get; set; }
+    public int PatronId { get; set; }
     public string FirstName { get; set; }
     public string MidIn { get; set; }
     public string LastName { get; set; }
     public string Address { get; set; }
     public string Phone { get; set; }
 
-    public ICollection<Checkout> Checkouts { get; set; }
+    public ICollection<Checkout> Checkouts { get; }
   }
 }

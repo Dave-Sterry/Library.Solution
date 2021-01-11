@@ -6,15 +6,12 @@ namespace Library.Models
   {
     public Book()
     {
-      this.BookCopies = new HashSet<BookCopy>();
-      this.BookAuthors = new HashSet<BookAuthor>();
-      this.Checkouts = new HashSet<Checkout>();
+      this.BookLibraries = new HashSet<BookLibrary>();
+      this.AuthorBooks = new HashSet<AuthorBook>();
     }
     public int BookId { get; set; }
     public string Title { get; set; }
-
-    public ICollection<BookCopy> BookCopies { get; set; }
-    public ICollection<BookAuthor> BookAuthors { get; set; }
-    public ICollection<Checkout> Checkouts { get; set; }
+    public ICollection<AuthorBook> AuthorBooks { get; }
+    public ICollection<BookLibrary> BookLibraries { get; }
   }
 }
