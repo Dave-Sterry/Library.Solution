@@ -13,6 +13,9 @@ namespace Library.Models
     public int AuthorId { get; set; }
     public int BookId { get; set; }
 
+    public Book Book { get; set; }
+    public Author Author { get; set; }
+
     public ICollection<Book> Books { get; }
     public ICollection<Author> Authors { get; }
   }
