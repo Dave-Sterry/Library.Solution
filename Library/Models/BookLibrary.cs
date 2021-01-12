@@ -12,9 +12,11 @@ namespace Library.Models
     }
     public int BookLibraryId { get; set; }
     public int BookId { get; set; }
+    public int CheckoutId { get; set; } //might need to be removed later
     public int LibraryBranchId { get; set; }
     public int Num_Copies { get; set; }
     public Book Book { get; set; }
+    public Checkout Checkout { get; set; }
 
     public LibraryBranch LibraryBranch { get; set; }
     //public ICollection<Book> Books { get; }

@@ -27,11 +27,11 @@ namespace Library.Models
 
     [DisplayName("Return Date")]
     [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd hh:mm tt}")]
-    public DateTime ReturnDate { get; }
-
+    public DateTime ReturnDate { get; set; }
+    public Patron Patron { get; set; }
     public ICollection<BookLibrary> BookLibraries { get; }
 
-    // public ICollection<Patron> Patrons { get; }
+    //public ICollection<Patron> Patrons { get; set; }
   }
 
 }
