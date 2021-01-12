@@ -7,15 +7,16 @@ namespace Library.Models
     public LibraryBranch()
     {
       this.Books = new HashSet<Book>();
-      // this.BookLibraries = new HashSet<BookLibrary>();
+      this.BookLibraries = new HashSet<BookLibrary>();
     }
   public int LibraryBranchId { get; set;}
   public string LibraryName { get; set; }
   public string Address { get; set; }
 
+
   public ICollection<Book> Books { get; }
 
-  // public ICollection<BookLibrary> BookLibraries { get; }
+  public ICollection<BookLibrary> BookLibraries { get; }
   
   }
 
