@@ -3,14 +3,16 @@ using System;
 using Library.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Library.Migrations
 {
     [DbContext(typeof(LibraryContext))]
-    partial class LibraryContextModelSnapshot : ModelSnapshot
+    [Migration("20210112213013_Checkout")]
+    partial class Checkout
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -108,8 +110,6 @@ namespace Library.Migrations
 
                     b.HasKey("CheckoutId");
 
-                    b.HasIndex("PatronId");
-
                     b.ToTable("Checkouts");
                 });
 
@@ -125,26 +125,6 @@ namespace Library.Migrations
                     b.HasKey("LibraryBranchId");
 
                     b.ToTable("LibraryBranches");
-                });
-
-            modelBuilder.Entity("Library.Models.Patron", b =>
-                {
-                    b.Property<int>("PatronId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Address");
-
-                    b.Property<string>("FirstName");
-
-                    b.Property<string>("LastName");
-
-                    b.Property<string>("MidIn");
-
-                    b.Property<string>("Phone");
-
-                    b.HasKey("PatronId");
-
-                    b.ToTable("Patrons");
                 });
 
             modelBuilder.Entity("Library.Models.AuthorBook", b =>
@@ -181,14 +161,6 @@ namespace Library.Migrations
                     b.HasOne("Library.Models.LibraryBranch", "LibraryBranch")
                         .WithMany()
                         .HasForeignKey("LibraryBranchId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("Library.Models.Checkout", b =>
-                {
-                    b.HasOne("Library.Models.Patron")
-                        .WithMany("Checkouts")
-                        .HasForeignKey("PatronId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

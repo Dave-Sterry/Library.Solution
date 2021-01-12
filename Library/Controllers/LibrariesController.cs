@@ -33,7 +33,7 @@
 //       _db.LibraryBranches.Add(libraryBranch);
 //       if (BookId != 0)
 //       {
-//         _db.BookLibraries.Add(new BookLibrary() { BookId = BookId, LibraryId = libraryBranch.LibraryId });
+//         _db.BookLibraries.Add(new BookLibrary() { BookId = BookId, LibraryBranchId = libraryBranch.LibraryBranchId });
 //       }
 //       _db.SaveChanges();
 //       return RedirectToAction("Index");

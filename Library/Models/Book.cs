@@ -7,7 +7,7 @@ namespace Library.Models
     public Book()
     {
       this.AuthorBooks = new HashSet<AuthorBook>();
-      // this.BookLibraries = new HashSet<BookLibrary>();
+      this.BookLibraries = new HashSet<BookLibrary>();
       // this.Authors = new HashSet<Author>();
     }
     public int BookId { get; set; }
@@ -15,6 +15,6 @@ namespace Library.Models
 //     public Author Author { get; set; }
 //     public ICollection<Author> Authors { get; }
     public ICollection<AuthorBook> AuthorBooks { get; set; }
-//     public ICollection<BookLibrary> BookLibraries { get; }
+    public ICollection<BookLibrary> BookLibraries { get; }
   }
 }

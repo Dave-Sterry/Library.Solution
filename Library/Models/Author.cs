@@ -4,11 +4,11 @@ namespace Library.Models
 {
   public class Author
   {
-    // public Author()
-    // {
+    public Author()
+    {
 //       this.Books = new HashSet<Book>();
-      // this.AuthorBooks = new HashSet<AuthorBook>();
-    // }
+      this.AuthorBooks = new HashSet<AuthorBook>();
+    }
     public int AuthorId { get; set; }
     private string _name;
     
@@ -22,7 +22,7 @@ namespace Library.Models
     public string LastName { get; set; }
 //     // public Book Book { get; set; }
 //     public ICollection<Book> Books { get; }
-    // public ICollection<AuthorBook> AuthorBooks { get; }
+    public ICollection<AuthorBook> AuthorBooks { get; }
 
   }
 
