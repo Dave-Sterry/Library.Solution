@@ -12,7 +12,7 @@
 
 @if (Model.Any())
 {
-  <ul>
+  <ul class="no-bullets">
     @foreach (Book book in Model)
     {
       <li>
@@ -28,4 +28,3 @@ else
   </h3>
 }
 <p>@Html.ActionLink("Add book", "Create")</p>
-<p>@Html.ActionLink("Home", "Index", "Home")</p>

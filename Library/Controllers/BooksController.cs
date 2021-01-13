@@ -72,8 +72,10 @@ namespace Library.Controllers
     }
 
     [HttpPost]
-    public ActionResult Edit(Book book, int AuthorId, int LibraryBranchId)
+    public async Task<ActionResult> Edit(Book book, int AuthorId, int LibraryBranchId)
     {
+      var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      var currentUser = await _userManager.FindByIdAsync(userId);
       _db.Books.Add(book);
       if (AuthorId != 0)
       {
@@ -98,8 +100,10 @@ namespace Library.Controllers
     }
 
     [HttpPost, ActionName("Delete")]
-    public ActionResult DeleteConfirmed(int id)
+    public async Task<ActionResult> DeleteConfirmed(int id)
     {
+      var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      var currentUser = await _userManager.FindByIdAsync(userId);
       var thisBook= _db.Books.FirstOrDefault(books => books.BookId == id);
       _db.Books.Remove(thisBook);
       _db.SaveChanges();

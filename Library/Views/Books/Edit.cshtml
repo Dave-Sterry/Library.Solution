@@ -1,0 +1,18 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Library.Models.Book
+
+<h4>Edit Book Entry</h4>
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model =>model.Title)
+    @Html.TextBoxFor(model => model.Title)
+
+    @* @Html.Label("Select Author")
+    @Html.DropDownList("AuthorId") *@
+
+    <input type = "submit" value="Edit" class="btn btn-default"/>
+}
