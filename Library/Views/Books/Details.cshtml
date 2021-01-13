@@ -1,5 +1,5 @@
 @{
-  Layout = " _Layout";
+  Layout = "_Layout";
 }
 
 @model Library.Models.Book
@@ -9,7 +9,7 @@
   <hr /> 
   <h4>Title: @Html.DisplayFor(model => model.Title)</h4>
 
-  @* @if (@Model.AuthorBooks.Count == 0)
+  @if (@Model.AuthorBooks.Count == 0)
   {
     <h4>There are no attributed Authors for this book.</h4>
   }
@@ -19,7 +19,7 @@
     <ul class="no-bullets">
       @foreach (var join in Model.AuthorBooks)
       {
-        <li>@join.AuthorBook.Name</li>
+        <li>@join.Author.Name</li>
         @using (Html.BeginForm("DeleteAuthor", "Books"))
         {
           @Html.Hidden("joinId", @join.AuthorBookId)
@@ -27,8 +27,8 @@
         }
       }
     </ul>
-  } *@
+  }
   @Html.ActionLink("Back to List", "Index")
-  @* @Html.ActionLink("Edit Book Details", "Edit", new { id = Model.BookId})
-  @Html.ActionLink("Remove Book", "Delete", new { id = Model.BookId}) *@
+  @Html.ActionLink("Edit Book Details", "Edit", new { id = Model.BookId})
+  @Html.ActionLink("Remove Book", "Delete", new { id = Model.BookId})
 </div>

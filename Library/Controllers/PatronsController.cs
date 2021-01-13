@@ -46,9 +46,8 @@ namespace Library.Controllers
     public ActionResult Details(int id)
     {
       var thisPatron = _db.Patrons
-          //.Include(patron => patron.Checkouts)
-          // .ThenInclude(join => join.Checkout)
-          // NOTES!!!!this doesn't want to be join.Checkout, but we are not sure what it should be yet. Check later?
+          .Include(patron => patron.Checkouts)
+          .ThenInclude(join => join.PatronId)
           .FirstOrDefault(patron => patron.PatronId == id);
       return View(thisPatron);
     }

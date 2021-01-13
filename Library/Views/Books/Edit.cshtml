@@ -8,6 +8,8 @@
 
 @using (Html.BeginForm())
 {
+    @Html.HiddenFor(model => model.BookId) //added to fix edit view issue
+
     @Html.LabelFor(model =>model.Title)
     @Html.TextBoxFor(model => model.Title)
 

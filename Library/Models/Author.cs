@@ -20,6 +20,7 @@ namespace Library.Models
     public  string FirstName { get; set; }
     public  string MidIn { get; set; }
     public string LastName { get; set; }
+    public virtual ApplicationUser User { get; set; } 
 //     // public Book Book { get; set; }
 //     public ICollection<Book> Books { get; }
     public ICollection<AuthorBook> AuthorBooks { get; }

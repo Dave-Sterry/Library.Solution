@@ -4,22 +4,31 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using System.Threading.Tasks;
+using System.Security.Claims;
 
 namespace Library.Controllers
 {
+  [Authorize]
   public class AuthorsController: Controller
   { 
-
+    private readonly UserManager<ApplicationUser> _userManager;
     private readonly LibraryContext _db;
 
-    public AuthorsController(LibraryContext db)
+    public AuthorsController(LibraryContext db, UserManager<ApplicationUser> userManager)
     {
+      _userManager = userManager;
       _db = db;
     }
 
-    public ActionResult Index()
+    public async Task<ActionResult> Index()
     {
-      return View(_db.Authors.ToList());
+      var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      var currentUser = await _userManager.FindByIdAsync(userId);
+      var userAuthor = _db.Authors.Where(entry => entry.User.Id == currentUser.Id).ToList();
+      return View(userAuthor);
     }
 
     public ActionResult Create()
@@ -29,11 +38,11 @@ namespace Library.Controllers
     }
 
     [HttpPost]
-    public ActionResult Create(Author author, int BookId)
+    public async Task<ActionResult> Create(Author author, int BookId)
     {
-      // var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-      // var currentUser = await _userManager.FindByIdAsync(userId);
-      // item.User = currentUser;
+      var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      var currentUser = await _userManager.FindByIdAsync(userId);
+      author.User = currentUser;
       _db.Authors.Add(author);
       if (BookId != 0)
       {
@@ -60,8 +69,10 @@ namespace Library.Controllers
     }
     
     [HttpPost]
-    public ActionResult Edit(Author author, int BookId)
+    public async Task<ActionResult> Edit(Author author, int BookId)
     {
+      var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      var currentUser = await _userManager.FindByIdAsync(userId);
       if (BookId != 0)
       {
         _db.AuthorBooks.Add(new AuthorBook() { BookId = BookId, AuthorId = author.AuthorId });
@@ -103,8 +114,10 @@ namespace Library.Controllers
     }
 
     [HttpPost, ActionName("Delete")]
-    public ActionResult DeleteConfirmed(int id)
+    public async Task<ActionResult> DeleteConfirmed(int id)
     {
+      var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      var currentUser = await _userManager.FindByIdAsync(userId);
       var thisAuthor = _db.Authors.FirstOrDefault(authors => authors.AuthorId == id);
       _db.Authors.Remove(thisAuthor);
       _db.SaveChanges();

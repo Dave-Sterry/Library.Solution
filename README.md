@@ -241,3 +241,14 @@ GPLv3
 
 Copyright © 2020 YOUR NAME
 
+//
+- tried to remove Viewbags from CREATE
+- changed db sets (authorbooks, booklibraries) w/i the HTTPPOST CREATE
+- something in the HTTPPOST EDIT???
+- we're dying squirtle
+- stared at problem and grappled with the existential malaise of reality, and also this bug
+- exhaled dramatically into headset mics 4x while thinking
+- took a break to walk away and Think but resulted in:
+- sad music
+- charlie brown despondency
+- shower thoughts resulting in no thoughts

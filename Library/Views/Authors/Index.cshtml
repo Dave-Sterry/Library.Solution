@@ -1,0 +1,30 @@
+@{
+  Layout = "_Layout";
+}
+
+@using Library.Models;
+@model IEnumerable<Library.Models.Author>
+
+<div class="container">
+  <h2>
+    @User.Identity.Name
+  </h2>
+  @if (Model.Any())
+  {
+    <ul class="no-bullets">
+      @foreach (Author author in Model)
+      {
+        <li>
+          @Html.ActionLink($"{author.Name}", "Details", new { id = author.AuthorId})
+        </li>
+      }
+    </ul>
+  }
+  else
+  {
+    <h4>
+      No Authors.
+    </h4>
+  }
+  @Html.ActionLink("Add Author", "Create")
+</div>

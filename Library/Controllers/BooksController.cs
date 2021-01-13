@@ -30,12 +30,12 @@ namespace Library.Controllers
     }
     public ActionResult Create()
     {
-      ViewBag.BookId = new SelectList(_db.Authors, "AuthorId", "Name");
-      ViewBag.BookId = new SelectList(_db.LibraryBranches, "LibraryBranchId", "LibraryName");
+      ViewBag.AuthorId = new SelectList(_db.Authors, "AuthorId", "Name");
+      ViewBag.LibraryBranchId = new SelectList(_db.LibraryBranches, "LibraryBranchId", "LibraryName");
       return View();
     }
     [HttpPost]
-    public async Task<ActionResult> Create(Book book, int AuthorId, int LibraryBranchId)
+    public async Task<ActionResult> Create(Book book, int LibraryBranchId, int AuthorId)
     {
       var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
       var currentUser = await _userManager.FindByIdAsync(userId);
@@ -66,8 +66,8 @@ namespace Library.Controllers
     public ActionResult Edit(int id)
     {
       var thisBook = _db.Books.FirstOrDefault(book => book.BookId == id);
-      ViewBag.BookId = new SelectList(_db.Authors, "AuthorId", "Name");
-      ViewBag.BookId = new SelectList(_db.LibraryBranches, "LibraryBranchId", "LibraryName");
+      ViewBag.AuthorId = new SelectList(_db.Authors, "AuthorId", "Name");
+      ViewBag.LibraryBranchId = new SelectList(_db.LibraryBranches, "LibraryBranchId", "LibraryName");
       return View(thisBook);
     }
 
@@ -76,7 +76,7 @@ namespace Library.Controllers
     {
       var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
       var currentUser = await _userManager.FindByIdAsync(userId);
-      _db.Books.Add(book);
+      // _db.Books.Add(book);
       if (AuthorId != 0)
       {
         _db.AuthorBooks.Add( new AuthorBook() { AuthorId = AuthorId, BookId = book.BookId });
