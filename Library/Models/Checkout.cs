@@ -10,7 +10,7 @@ namespace Library.Models
   {
     public Checkout()
     {
-      this.Patrons = new HashSet<Patron>();
+      //this.Patrons = new HashSet<Patron>();
       this.BookLibraries = new HashSet<BookLibrary>();
     }
     public int CheckoutId { get; set; }
@@ -31,7 +31,7 @@ namespace Library.Models
     public Patron Patron { get; set; }
     public ICollection<BookLibrary> BookLibraries { get; }
 
-    public ICollection<Patron> Patrons { get; set; }
+    //public ICollection<Patron> Patrons { get; set; }
   }
 
 }

@@ -7,7 +7,7 @@ namespace Library.Models
 
     public Patron()
     {
-      this.Checkouts = new HashSet<Checkout>();
+      //this.Checkouts = new HashSet<Checkout>();
     }
     public int PatronId { get; set; }
     private string _name;
@@ -23,6 +23,6 @@ namespace Library.Models
     public string Phone { get; set; }
 
     public Checkout Checkout { get; set; }
-    public ICollection<Checkout> Checkouts { get; set; }
+    //public ICollection<Checkout> Checkouts { get; set; }
   }
 }
